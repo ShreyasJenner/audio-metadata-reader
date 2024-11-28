@@ -1,12 +1,10 @@
-#include "flac/read_flac_metadata.h"
-#include "images/jpeg.h"
-#include "log.h"
-#include "mp3/frame_reader.h"
-#include "mp3/id3_free.h"
-#include "mp3/id3_structs.h"
-#include "mp3/id3reader.h"
-#include "stdheader.h"
-#include "syncint.h"
+#include "audio-metadata-reader/flac/read_flac_metadata.h"
+#include "audio-metadata-reader/images/jpeg.h"
+#include "audio-metadata-reader/log.h"
+#include "audio-metadata-reader/mp3/id3_structs.h"
+#include "audio-metadata-reader/mp3/id3reader.h"
+#include "audio-metadata-reader/stdheader.h"
+#include "audio-metadata-reader/syncint.h"
 
 /* Driver Tag */
 int main(int argc, char **argv) {

@@ -1,5 +1,4 @@
-#include "log.h"
-#include "stdheader.h"
+#include "audio-metadata-reader/log.h"
 
 /* logs error into a file stored in the /tmp directory
  * Returns 0 on failing to open file

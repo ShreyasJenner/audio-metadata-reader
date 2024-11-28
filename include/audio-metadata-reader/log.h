@@ -1,6 +1,8 @@
 #ifndef LOG_H
 #define LOG_H
 
+#include "audio-metadata-reader/stdheader.h"
+
 #define LOG_FILE "/tmp/error.log"
 #define LOG_MSG_SIZE 512
 

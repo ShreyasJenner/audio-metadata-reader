@@ -5,9 +5,7 @@
  * the size and number of samples in the frame
  */
 
-#include "mp3/mp3_lut.h"
-#include "mp3/id3_structs.h"
-#include "stdheader.h"
+#include "audio-metadata-reader/mp3/mp3_lut.h"
 
 /*
  * 00 - v2.5

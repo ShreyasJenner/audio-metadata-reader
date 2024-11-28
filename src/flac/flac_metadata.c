@@ -1,7 +1,4 @@
-#include "flac/flac_structs.h"
-#include "flac/read_flac_metadata.h"
-#include "log.h"
-#include "stdheader.h"
+#include "audio-metadata-reader/flac/read_flac_metadata.h"
 
 /* Function checks if the passed file is a flac file
  * Returns 1 on success

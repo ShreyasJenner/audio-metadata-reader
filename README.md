@@ -43,3 +43,5 @@ bin/metadata-reader <path-to-audio-file>
 1. Currently for mp3 when printing the frame list, explanation of the frame code has not been added. Users need to check what 
 each code means and then print the result:
   - Eg, APIC -> means image data
+2. MP3 frame header reading has not been implemented yet (mp3_lut.c)
+3. Only JPEG files can currently be written. Support for other image formats has not yet been implemented

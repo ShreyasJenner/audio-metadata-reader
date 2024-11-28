@@ -17,8 +17,11 @@ BIN=$(BINDIR)/metadata-reader
 # compile objects 
 all: $(BIN)
 
-$(BIN): $(LIB)
+$(BIN): $(LIB) | $(BINDIR)
 	$(CC) -o $(BIN) $(OBJ) $(CFLAGS)
+
+$(BINDIR):
+	@mkdir -p bin
 
 $(LIB): $(OBJ) | $(LIBDIR)
 	ar -rcs $@ $(OBJ) 
@@ -27,15 +30,16 @@ $(LIBDIR):
 	mkdir -p $(LIBDIR)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(OBJDIR):
 	mkdir -p $(OBJDIR)
 
 clean:
-	rm -f $(BINDIR)/*
-	rm -f $(LIBDIR)/*
-	rm -rf $(OBJDIR)/**/*.o
+	rm -rf $(BINDIR)
+	rm -rf $(OBJDIR)
+	rm -f $(LIB)
 
 
 info:

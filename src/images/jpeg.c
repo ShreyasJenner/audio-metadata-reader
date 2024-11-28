@@ -1,6 +1,4 @@
-#include "images/jpeg.h"
-#include "log.h"
-#include "stdheader.h"
+#include "audio-metadata-reader/images/jpeg.h"
 
 /* Function to get check if passed data contains jpeg data
  * Returns the starting position of the jpeg file if jpeg magic bytes are
