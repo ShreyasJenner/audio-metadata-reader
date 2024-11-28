@@ -1,7 +1,7 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-#include "stdheader.h"
+#include "audio-metadata-reader/stdheader.h"
 
 typedef struct id3_tag ID3Tag;
 typedef struct tag_header ID3TagHeader;

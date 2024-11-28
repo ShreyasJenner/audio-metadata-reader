@@ -4,7 +4,7 @@
  * 2. Convert sync-safe ints to 32b uints
  */
 
-#include "syncint.h"
+#include "audio-metadata-reader/syncint.h"
 
 /*
  * Function converts 32bit integer to synchronized safe integer
