@@ -21,8 +21,16 @@ bin/metadata-reader <path-to-audio-file>
     - printing the audio frame data in the file
     - writing the image to /tmp so that it can be viewed, etc
 
-2. Demo:
+2. Using as library:
+  - Functions that return structs with all metadata information:
+    - get_id3tag -> mp3
+    - get_FLACMetadata -> flac
 
+  - Corresponding cleaning functions to clear the resources used:
+    - ID3_FREE -> mp3
+    - clean_FLACMetadata -> flac
+
+3. Demo:
   - Viewing lyric metadata
   ![](data/lyric.webp)
 
@@ -30,7 +38,8 @@ bin/metadata-reader <path-to-audio-file>
   ![](data/image.webp) 
 
 
-
 <h3>Fixes:</h3> 
+
 1. Currently for mp3 when printing the frame list, explanation of the frame code has not been added. Users need to check what 
-each code means and then print the result
+each code means and then print the result:
+  - Eg, APIC -> means image data
