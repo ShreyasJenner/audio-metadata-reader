@@ -1,4 +1,5 @@
 #include "audio-metadata-reader/mp3/id3reader.h"
+#include "audio-metadata-reader/mp3/mp3_lut.h"
 
 /*
  * Check if id3 frame header exists at file descriptor position
@@ -207,7 +208,8 @@ int id3_tagcheck(char *filename) {
 }
 
 /*
- * Function gets id3 tag header info and stores in struct
+ * Function gets id3 tag header info and stores in struct pointer
+ * The
  */
 ID3TagHeader *get_id3tagheader(int fd, ID3TagHeader *hdr) {
   char identifier[3];
@@ -318,94 +320,4 @@ ID3Tag *get_id3tag(char *filename) {
   lseek(fd, 0, SEEK_SET);
 
   return tag;
-}
-
-/* Function to view id3 data */
-void id3_View(char *filename) {
-  /* Declaration */
-  int choice, i, flag;
-  ID3Tag *tag;
-
-  /* get the id3 tag and store it */
-  tag = get_id3tag(filename);
-  if (tag == NULL) {
-    logerror(__FILE__, __LINE__, __func__, "No ID3 Data");
-    exit(1);
-  }
-
-  flag = 1;
-  choice = 'h';
-  while (flag) {
-    switch (choice) {
-    case 'h':
-      printf("Available information:\n");
-      printf("\t1:ID3 header information\n");
-      printf("\t2:Size of ID3 tag\n");
-      printf("\t3:No of ID3 frames\n");
-      printf("\t4:ID3 frame list\n");
-      printf("\t5:ID3 frame header information\n");
-      printf("\t6:Details of ID3 frames\n");
-      printf("\th:Help\n");
-      break;
-
-    case 'q':
-      printf("Exiting Program\n");
-      flag = 0;
-      break;
-
-    case 1:
-      show_id3tagheader(tag);
-      break;
-    case 2:
-      printf("%d/%02x\n", tag->size, tag->size);
-      break;
-    case 3:
-      printf("%d\n", tag->frame_no);
-      break;
-    case 4:
-      for (i = 0; i < tag->frame_no; i++)
-        printf("%d:%s\n", i, tag->frame_list[i]);
-      break;
-    case 5:
-      printf("Enter frame number:");
-      if (scanf("%d", &choice) != 1) {
-        choice = fgetc(stdin);
-      }
-
-      if (choice < tag->frame_no)
-        show_id3frameheader(tag->frame_arr[choice]->hdr);
-      else
-        printf("Out of range\n");
-      break;
-    case 6:
-      printf("Enter frame number:");
-      if (scanf("%d", &choice) != 1) {
-        choice = fgetc(stdin);
-      }
-      if (choice < tag->frame_no) {
-        /* write jpeg image */
-        if (check_JPEG(tag->frame_arr[choice]->data,
-                       tag->frame_arr[choice]->hdr->frame_size) == -1) {
-          printf("Not JPEG file\n");
-        } else {
-
-          jpeg_writer(tag->frame_arr[choice]->data,
-                      tag->frame_arr[choice]->hdr->frame_size);
-        }
-      } else {
-        printf("Out of range\n");
-      }
-      break;
-
-    default:
-      break;
-    }
-
-    if (flag && scanf("%d", &choice) != 1) {
-      choice = fgetc(stdin);
-    }
-  }
-
-  /* clean up resources */
-  ID3_FREE(tag);
 }
