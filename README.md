@@ -2,7 +2,7 @@
 # id3reader
 
 ## About the Project
-A tool to read metadata from audio files.
+A tool/library to read metadata from audio files.
 
 ### Supported Formats
 - **MP3**
@@ -20,7 +20,7 @@ bin/metadata-reader <path-to-audio-file>
 ```
 
 The program provides options such as:
-- Printing ID3 or stream information.
+- Printing ID3 or FLAC stream information.
 - Printing the audio frame data in the file.
 - Extracting and saving the image to `/tmp` for viewing.
 
@@ -45,7 +45,7 @@ Functions available for external usage are marked with a **`+`** symbol.
 #### MP3 Structs and Functions Diagram
 ![MP3 Struct Image](./assets/mp3.drawio.png)
 
-1. **`get_id3tag(char *filename) -> ID3Tag`**  
+1. **`get_id3tag(char *filename) -> ID3Tag*`**  
    - Accepts the path to an MP3 file.  
    - Returns an `ID3Tag` struct if an ID3 tag is present.  
    - Returns `NULL` if no ID3 tag is present.
@@ -61,9 +61,18 @@ Functions available for external usage are marked with a **`+`** symbol.
 4. **`show_id3tagheader(ID3Tag *tag) -> void`**  
    - Prints ID3 tag header information to the terminal.
 
-5. **`id3_View(char *filename) -> void`**  
-   - Menu-driven program that prints ID3 tag information.  
-   - Can serve as a reference for using the `ID3Tag` struct.
+5. **`get_mp3FrameHeader(char *filename) -> MP3FrameHeader*`**  
+   - Accepts the path to an MP3 file.  
+   - Returns a `MP3FrameHeader` struct if file is MP3.
+   - Returns `NULL` if file is not MP3.
+
+6. **`MP3FrameHeader_FREE(MP3FrameHeader *mfhd) -> MP3FrameHeader*`**  
+   - Releases memory allocated for a`MP3FrameHeader` struct.  
+   - Call this function when the struct is no longer needed.
+
+7. **`program_demo(char *filename) -> void`**  
+   - Menu-driven program that prints ID3 tag and MP3FrameHeader information.  
+   - Can serve as a reference for using the `ID3Tag` and `MP3FrameHeader` struct.
 
 ---
 
@@ -104,4 +113,7 @@ Functions available for external usage are marked with a **`+`** symbol.
    - Add support for additional formats.
 
 4. **Consistent naming for functions**  
-   - Some functions start with id3 and others with ID3
+   - Some functions start with id3 and others with ID3.
+
+5. **Update README to include updated Menu-driver program**  
+   - Option showing MP3FrameHeader is not present in the webp.

@@ -3,8 +3,10 @@
 #include "audio-metadata-reader/log.h"
 #include "audio-metadata-reader/mp3/id3_structs.h"
 #include "audio-metadata-reader/mp3/id3reader.h"
+#include "audio-metadata-reader/mp3/mp3_lut.h"
 #include "audio-metadata-reader/stdheader.h"
 #include "audio-metadata-reader/syncint.h"
+#include "driver.h"
 
 /* Driver Tag */
 int main(int argc, char **argv) {
@@ -17,7 +19,7 @@ int main(int argc, char **argv) {
   /* check if passed file is mp3 */
   if (id3_tagcheck(argv[1])) {
     printf("mp3 file detected\n");
-    id3_View(argv[1]);
+    program_demo(argv[1]);
   } else if (flac_check(argv[1])) {
     printf("Flac file identified\n");
     view_FLACMetadata(argv[1]);

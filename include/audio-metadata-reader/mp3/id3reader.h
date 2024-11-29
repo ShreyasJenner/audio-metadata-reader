@@ -27,8 +27,6 @@ void show_id3tagheader(ID3Tag *tag);
 
 ID3Tag *get_id3tag(char *filename);
 
-void id3_View(char *filename);
-
 void ID3_FREE(ID3Tag *tag);
 
 #endif
