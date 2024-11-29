@@ -27,6 +27,7 @@ int flac_check(char *filename) {
   return id[0] == 'f' && id[1] == 'L' && id[2] == 'a' && id[3] == 'C';
 }
 
+/* Function to dynamically allocate space for flac metadata */
 FLACMetadata *allocate_FLACMetadataSpace() {
   /* Declaration */
   FLACMetadata *metadata;
@@ -58,6 +59,8 @@ FLACMetadata *allocate_FLACMetadataSpace() {
   return metadata;
 }
 
+/* Function checks flac metatype in the streammetadata and stores in in
+ * appropriate pointer in metadata */
 void store_FLACMetadata(FLACMetadata *metadata, FLAC__MetadataType metatype,
                         FLAC__StreamMetadata *streammetadata) {
 
@@ -88,6 +91,7 @@ void store_FLACMetadata(FLACMetadata *metadata, FLAC__MetadataType metatype,
   }
 }
 
+/* Function returns a struct containing flac metadata */
 FLACMetadata *get_FLACMetadata(char *filename) {
   /* Declaration */
   FLACMetadata *metadata;
@@ -134,6 +138,8 @@ FLACMetadata *get_FLACMetadata(char *filename) {
   return metadata;
 }
 
+/* Function to deallocate dynamically allocated space for the flac metadata
+ * components */
 void clean_FLACMetadata(FLACMetadata *metadata) {
   if (metadata != NULL) {
     if (metadata->picture != NULL) {

@@ -182,7 +182,7 @@ ID3Frame *get_id3frame(int fd) {
 }
 
 /*
- * Function is passed a file descriptor
+ * Function is passed path to mp3 file
  * Checks if file contains id3 tag
  * Restores position of file pointer after reading
  * Returns 1 on success
@@ -275,10 +275,9 @@ void ID3_FREE(ID3Tag *tag) {
 }
 
 /*
- * Function is passed a file descriptor pointing to an mp3 file
+ * Function is passed path to an mp3 file
  * Return a struct containing all id3 information if id3 tag is present
  * Return NULL if no id3 tag
- * The function does not reposition the file descriptor after reading
  */
 ID3Tag *get_id3tag(char *filename) {
   int err, i, fd;
