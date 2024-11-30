@@ -198,11 +198,15 @@ MP3FrameHeader *get_mp3FrameHeader(char *filename) {
         4;
   }
 
+  // TODO: add channel numbers for all 4 supported channel modes
   if (!strcmp(chan, "stereo") || !strcmp(chan, "joint(stereo)") ||
       !strcmp(chan, "dual(stereo)"))
     mfhd->channel_no = 2;
   else
     mfhd->channel_no = 1;
+
+  // free id3 tag
+  ID3_FREE(tag);
 
   return mfhd;
 }
