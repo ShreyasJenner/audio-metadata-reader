@@ -1,10 +1,12 @@
 
-# id3reader
+# audio-metadata-reader
 
 ## About the Project
-A tool/library to read metadata from audio files.
+
+A exif-inspired tool/library to read metadata from audio files.
 
 ### Supported Formats
+
 - **MP3**
 - **FLAC**
 
@@ -13,6 +15,7 @@ A tool/library to read metadata from audio files.
 ## Guide
 
 ### Usage
+
 Run the following command, passing the path to the audio file:
 
 ```bash
@@ -20,9 +23,10 @@ bin/metadata-reader <path-to-audio-file>
 ```
 
 The program provides options such as:
-- Printing ID3 or FLAC stream information.
-- Printing the audio frame data in the file.
-- Extracting and saving the image to `/tmp` for viewing.
+
+- Printing metadata information.
+- Printing the audio frame data.
+- Extracting and saving album art to `/tmp` for viewing.
 
 ---
 
@@ -43,6 +47,7 @@ Functions available for external usage are marked with a **`+`** symbol.
 ### MP3 Functions
 
 #### MP3 Structs and Functions Diagram
+
 ![MP3 Struct Image](./assets/mp3.drawio.png)
 
 1. **`get_id3tag(char *filename) -> ID3Tag*`**  
@@ -79,6 +84,7 @@ Functions available for external usage are marked with a **`+`** symbol.
 ### FLAC Functions
 
 #### FLAC Structs and Functions Diagram
+
 ![FLAC Struct Image](./assets/flac.drawio.png)
 
 1. **`get_FLACMetadata(char *filename) -> FLACMetadata`**  
@@ -99,10 +105,10 @@ Functions available for external usage are marked with a **`+`** symbol.
 
 ---
 
-## Pending Fixes
+## To-Do
 
 1. **MP3 Frame List Explanation**  
-   - Currently, users need to look up frame codes (e.g., `APIC` for image data).  
+   - Currently, users need to look up frame codes (e.g., `APIC` for image data)
    - Add explanations directly to the output.
 
 2. **MP3 Frame Header Reading**  
@@ -117,3 +123,9 @@ Functions available for external usage are marked with a **`+`** symbol.
 
 5. **Update README to include updated Menu-driver program**  
    - Option showing MP3FrameHeader is not present in the webp.
+
+6. **Add support for other music formats**
+    - ogg
+    - wav
+    - m4a
+    - aiff
