@@ -3,7 +3,7 @@
 
 ## About the Project
 
-A exif-inspired tool/library to read metadata from audio files.
+A exif-inspired tool/library to read metadata from audio files. It prints text information onto the terminal and can also recreate image data for viewing
 
 ### Supported Formats
 
@@ -32,11 +32,38 @@ The program provides options such as:
 
 ### Demo
 
-- **Viewing lyric metadata**  
+- **Viewing lyrics**  
   ![Lyric Demo](./assets/lyric.webp)
 
-- **Viewing song image metadata**  
+- **Viewing an image stored in the song metadata**  
   ![Track Image](./assets/image.webp)
+
+---
+
+## To-Do
+
+1. **MP3 Frame List Explanation**  
+   - Currently, users need to look up frame codes (e.g., `APIC` for image data) to understand what each code means
+   - Add explanations of each code directly to the output.
+
+2. **MP3 Frame Header Reading**  
+   - This functionality is not yet implemented (`mp3_lut.c`).
+
+3. **Image Format Support**  
+   - Currently limited to only JPEG files.  
+   - Add support for additional image formats.
+
+4. **Consistent naming for functions**  
+   - Some functions start with id3 and others with ID3.
+
+5. **Update README to include updated Menu-driver program**  
+   - Option showing MP3FrameHeader is not present in the webp.
+
+6. **Add support for other music formats**
+    - ogg
+    - wav
+    - m4a
+    - aiff
 
 ---
 
@@ -103,29 +130,3 @@ Functions available for external usage are marked with a **`+`** symbol.
    - Menu-driven program that prints FLAC metadata.  
    - Can serve as a reference for using the `FLACMetadata` struct.
 
----
-
-## To-Do
-
-1. **MP3 Frame List Explanation**  
-   - Currently, users need to look up frame codes (e.g., `APIC` for image data)
-   - Add explanations directly to the output.
-
-2. **MP3 Frame Header Reading**  
-   - This functionality is not yet implemented (`mp3_lut.c`).
-
-3. **Image Format Support**  
-   - Currently limited to JPEG files.  
-   - Add support for additional formats.
-
-4. **Consistent naming for functions**  
-   - Some functions start with id3 and others with ID3.
-
-5. **Update README to include updated Menu-driver program**  
-   - Option showing MP3FrameHeader is not present in the webp.
-
-6. **Add support for other music formats**
-    - ogg
-    - wav
-    - m4a
-    - aiff
